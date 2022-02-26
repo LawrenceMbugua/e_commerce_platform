@@ -3,11 +3,9 @@
 session_start();
 include_once('connection.php');
 
-
-// if (!isset($_SESSION['username'])) {
-//   header('Location: login.html');
-// }
-
+if (!isset($_SESSION['username'])) {
+  header('Location: login.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +24,6 @@ include_once('connection.php');
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <style>
-
-    </style>
   </head>
   <body>
 
@@ -103,34 +98,72 @@ include_once('connection.php');
        <div class="row">
 
        <?php
-            if (isset($_GET['product_category'])) {
-           
+
       
            $product_category = $_GET['product_category'];
+           $product_id = $_GET['product_id'];
 
 
-           $sql = "select * from $product_category";
-           $products = mysqli_query($connection, $sql);
+           $sql = "select * from $product_category where product_id = $product_id";
 
-          foreach ($products as $product) {
-              $product_name = $product['product_name'];
-              $product_image = $product['product_image'];
-              $product_price = $product['product_price'];
-              $product_category = $product['product_category'];
-              $product_id = $product['product_id'];
+           $product = mysqli_query($connection, $sql);
 
-              echo "<div class='col-md-3'>
-                      <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='width:100px'></a>
+           $row = mysqli_fetch_assoc($product);
+
+           
+           $product_name = $row['product_name'];
+           $product_price = $row['product_price'];
+           $product_image = $row['product_image'];
+           $product_description = $row['product_description'];
+
+
+              echo "<div class='col-md-4' style='border: 1px solid;'>
+                      <img src='$product_image' alt='img' style='width:200px'>
                       <p>$product_name</p>
                       <p>Ksh.$product_price</p>
+                      <p>$product_description</p>
+                  </div>
+                  <div class='col-md-4' style='border: 1px solid;'>
+                      
+                    <form action='product_details_handler.php' method='post'>
+
+                      <div class='form-group'>
+                        <input class='form-control' value='$product_category' type='text' name='product_category' readonly hidden>
+                        <br><br>
+                      </div>
+
+                      <div class='form-group'>
+                        <input class='form-control' value='$product_id' type='text' name='product_id' readonly hidden>
+                        <br><br>
+                      </div>
+
+
+                      <div class='form-group'>
+
+                          <select name='product_quantity' class='form-control'>
+                              <option value='1'>1<option>
+                              <option value='2'>2<option>
+                              <option value='3'>3<option>
+                              <option value='4'>4<option>
+                              <option value='5'>5<option>
+                          </select>
+
+                          <br><br>
+                      </div>
+
+                      <div class='form-group'>
+                        <input class='btn btn-primary' type='submit' name='add_to_cart' value='Add to Cart'>
+                      </div>
+                      
+                    
+                    </form>
+
                   </div>
                   <br>
                 ";
-              
-              }
 
 
-         }
+
         ?>
 
          

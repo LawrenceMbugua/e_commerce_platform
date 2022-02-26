@@ -3,9 +3,8 @@
 session_start();
 include_once('connection.php');
 
-
 if (!isset($_SESSION['username'])) {
-  header('Location: login.html');
+  header('Location: login.php');
 }
 
 ?>
@@ -136,6 +135,8 @@ if (!isset($_SESSION['username'])) {
                             <th>Product Quantity</th>
                             <th>Ordered Time</th>
                             <th>Order Number</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>";
@@ -150,6 +151,7 @@ if (!isset($_SESSION['username'])) {
                           $product_quantity = $product['product_quantity'];
                           $order_time = $product['order_time'];
                           $order_number = $product['order_number'];
+                          $order_status = $product['order_status'];
 
 
                           echo " <tr>
@@ -161,6 +163,14 @@ if (!isset($_SESSION['username'])) {
                                <td>$product_quantity</td>
                                <td>$order_time</td>
                                <td>$order_number</td>
+
+                               <td>$order_status</td>
+
+                               <td>
+                                  <a href='cleared_handler.php?order_number=$order_number' class='btn btn-success'>Clear</a>
+
+                                  <a href='delete_order.php?order_number=$order_number' class='btn btn-danger'>Delete</a>
+                               </td>
                            </tr>";
                       }
                         //End of foreach

@@ -9,6 +9,7 @@ include_once('connection.php');
 <?php
 
 if (isset($_POST['login'])) {
+    
 
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -19,14 +20,17 @@ if (isset($_POST['login'])) {
 
     $row = mysqli_num_rows($user);
 
-    $_SESSION['username'] = $username;
-
+    //Check if user exists
     if ($row == 1) {
         
+        $_SESSION['username'] = $username;
+
         header('Location: index.php');
-      
+        
     } else {
-        header('Location: login.html');
+
+        $invalid_message = "Wrong username or password!";
+        header("Location: login.php?invalid_message=$invalid_message");
       
     }
 

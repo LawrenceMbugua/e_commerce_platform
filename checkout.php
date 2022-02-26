@@ -3,9 +3,8 @@
 session_start();
 include_once('connection.php');
 
-
 if (!isset($_SESSION['username'])) {
-  header('Location: login.html');
+  header('Location: login.php');
 }
 
 
@@ -38,8 +37,23 @@ if (!isset($_SESSION['username'])) {
 
             $inserted = mysqli_query($connection, $order_sql);
 
+
+            $checkif_user_hasaddress_sql = "select * from address where username = '$username'";
+
+            $user = mysqli_query($connection, $checkif_user_hasaddress_sql);
+
+            $num = mysqli_num_rows( $user);
+
+
+
             if (isset($inserted)) {
-                header('Location: address.php');
+
+                if ($num < 1) {
+                  header('Location: address.php');
+                } else {
+                  header('Location: invoice.php');
+                }
+
             }
 
 

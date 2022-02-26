@@ -53,6 +53,17 @@
         <!-- Login here -->
         <div class="col-md-6 login">
           <h2>Login here</h2>
+          <?php 
+
+          
+
+          if (isset($_GET['invalid_message'])) {
+            $invalid_message = $_GET['invalid_message'];
+
+            echo "<p class='text-danger'>$invalid_message</p>";
+          }
+          
+          ?>
           <form action="login_handler.php" method="post">
             <div class="form-group">
               <input
@@ -60,6 +71,7 @@
                 name="username"
                 class="form-control"
                 placeholder="username"
+                required
               />
             </div>
             <br /><br />
@@ -69,6 +81,7 @@
                 name="password"
                 class="form-control"
                 placeholder="password"
+                required
               />
             </div>
             <br /><br />
@@ -84,13 +97,29 @@
         <!--Register here-->
         <div class="col-md-6 register">
           <h2>Register here</h2>
-          <form action="register_handler.php" method="post">
+          <?php
+
+
+          if (isset($_GET['message'])) {
+            $message = $_GET['message'];
+            echo "<p class='text-danger'>$message</p>";
+          }
+           
+          ?>
+          <form
+            name="myForm"
+            action="register_handler.php"
+            method="post"
+            onsubmit="return validateForm()"
+          >
             <div class="form-group">
               <input
                 type="text"
+                id="username"
                 name="username"
                 class="form-control"
                 placeholder="username"
+                required
               />
             </div>
             <br /><br />
@@ -101,16 +130,19 @@
                 name="email"
                 class="form-control"
                 placeholder="email"
+                required
               />
             </div>
             <br /><br />
 
             <div class="form-group">
               <input
+                id="password"
                 type="password"
                 name="password"
                 class="form-control"
                 placeholder="password"
+                required
               />
             </div>
             <br /><br />
@@ -121,10 +153,27 @@
               value="Register"
             />
           </form>
+
+          
         </div>
       </div>
     </div>
+    <p id="demo"></p>
 
+    <script>
+      function validateForm() {
+        let username = document.myForm.username.value;
+        let password = document.myForm.password.value;
+
+        if (username == null || username == "") {
+          alert("Username can't be blank!");
+          return false;
+        } else if (password.length < 6) {
+          alert("Password must be at least 6 characters long!");
+          return false;
+        }
+      }
+    </script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
