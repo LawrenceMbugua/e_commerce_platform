@@ -1,0 +1,15 @@
+{
+  "name": "e_commerce_platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://LawrenceMbugua.github.io/e_commerce_platform",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
