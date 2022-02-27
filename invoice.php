@@ -54,7 +54,8 @@ if (!isset($_SESSION['username'])) {
     </style>
   </head>
   <body>
-          <!--Navbar-->
+
+      <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
         <a class="navbar-brand" href="index.php">Logo</a>
@@ -67,15 +68,25 @@ if (!isset($_SESSION['username'])) {
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="mynavbar">
+        <div class="collapse navbar-collapse" style='display: flex; justify-content: space-between;' id="mynavbar">
           
-          <form action="search_handler.php" method="get" class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Search" />
+          <form action="search_handler.php" method="post" class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search" name="search"/>
             <button class="btn btn-primary" type="submit">Search</button>
           </form>
 
 
-          <?php 
+         
+          
+          <?php
+          $username = $_SESSION['username'];
+
+          echo "<a href='profile.php'>Hello, $username</a>";
+          
+          ?>
+
+
+           <?php 
               $username = $_SESSION['username'];
 
               $sql = "select * from cart where username = '$username';";
@@ -94,7 +105,11 @@ if (!isset($_SESSION['username'])) {
               echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
           ?>
 
-          <a href="logout_handler.php?">Logout</a>
+            <a href="admin.php">Admin</a>
+
+            <a href="logout_handler.php?">Logout</a>
+
+
 
         </div>
         

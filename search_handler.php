@@ -118,8 +118,12 @@ if (!isset($_SESSION['username'])) {
          $search = $_POST['search'];
 
 
-         
      
+      if($search == null ) {
+          header('Location: index.php');
+          die();
+      }
+
 
        $tables = array("electronics", "fashion", "consumer_goods", "education", "hardware", "furniture");
 
@@ -129,13 +133,15 @@ if (!isset($_SESSION['username'])) {
            $products = mysqli_query($connection, $sql);
 
           if ($products) {
-        
+          $present = 0;
           foreach ($products as $row) {
               $product_name = $row['product_name'];
               $product_image = $row['product_image'];
               $product_price = $row['product_price'];
               $product_category = $row['product_category'];
               $product_id = $row['product_id'];
+
+              $present += $product_id;
 
               echo "<div class='col-md-3'>
                       <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='width:100px'></a>
@@ -145,6 +151,11 @@ if (!isset($_SESSION['username'])) {
                   <br>
                 ";
               
+                } 
+
+                if ($present == 0) {
+                    $not_found = "Product not found!";
+                    header("Location: index.php?not_found=$not_found");
                 }
               } 
 
@@ -152,7 +163,7 @@ if (!isset($_SESSION['username'])) {
 
          }  
 
-
+        
         ?>      
 
        </div>

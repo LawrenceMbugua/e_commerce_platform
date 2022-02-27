@@ -111,6 +111,17 @@ if (!isset($_SESSION['username'])) {
 
     <!-- body-->
 
+    <?php
+
+    if (isset($_GET['not_found'])) {
+
+      $not_found = $_GET['not_found'];
+    
+      echo "<p class='text-danger text-center mt-1'>$not_found</p>";
+
+    }
+     ?>
+
     <div class="container" style="margin-top: 40px">
       <div class="row">
         <div class="category col-md-3" >

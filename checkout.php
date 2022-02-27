@@ -50,8 +50,14 @@ if (!isset($_SESSION['username'])) {
 
                 if ($num < 1) {
                   header('Location: address.php');
+
                 } else {
-                  header('Location: invoice.php');
+                   $delete_sql = "delete from cart where username = '$username'";
+
+                   $deleted = mysqli_query($connection, $delete_sql);
+
+                   header('Location: invoice.php');
+
                 }
 
             }

@@ -33,7 +33,6 @@ if (!isset($_SESSION['username'])) {
   </head>
   <body>
 
-
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
@@ -59,7 +58,8 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
+
+          echo "<a href='profile.php'>Hello, $username</a>";
           
           ?>
 
@@ -82,6 +82,8 @@ if (!isset($_SESSION['username'])) {
 
               echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
           ?>
+
+            <a href="admin.php">Admin</a>
 
             <a href="logout_handler.php?">Logout</a>
 

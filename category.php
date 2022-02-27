@@ -57,7 +57,8 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
+
+          echo "<a href='profile.php'>Hello, $username</a>";
           
           ?>
 
@@ -80,6 +81,8 @@ if (!isset($_SESSION['username'])) {
 
               echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
           ?>
+
+            <a href="admin.php">Admin</a>
 
             <a href="logout_handler.php?">Logout</a>
 
