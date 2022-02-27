@@ -86,7 +86,7 @@ if (!isset($_SESSION['username'])) {
               $products = mysqli_query($connection, $sql);
 
               $total_quantity = 0;
-              
+
               foreach($products as $product) {
 
                 $product_quantity = $product['product_quantity'];
@@ -94,12 +94,17 @@ if (!isset($_SESSION['username'])) {
 
               }
 
-              ?>
-              <a href="orders.php">Orders</a>
+            //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
+
+          ?>
+            <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
 
-          <a href="logout_handler.php?">Logout</a>
+            <a href="users.php">Users</a>
+
+            <a href="logout_handler.php?">Logout</a>
+
 
         </div>
         
@@ -110,49 +115,60 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container mt-5">
 
-        <div class="row">
-
     
 
     <?php 
 
-     $sql = "select * from address";
+     $sql = "select * from users";
 
-     $addresses = mysqli_query($connection, $sql);
+     $users = mysqli_query($connection, $sql);
 
      echo "<table>
             <thead>
-                <th>Username</th>
-                <th>City</th>
-                <th>Phone</th>
-                <th>Email</th>
+              <th>User Id</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Is Admin</th>
+              <th>Action</th>
             </thead>
             <tbody>";
 
-     foreach($addresses as $address) {
-         $username = $address['username'];
-         $city = $address['city'];
-         $phone = $address['phone'];
-         $email = $address['email'];
+     foreach($users as $user) {
+         $user_id = $user['id'];
+         $username = $user['username'];
+         $email = $user['email'];
+         $is_admin = $user['is_admin'];
 
+         if ($is_admin) {
+             $is_admin = 'True';
+         } else {
+             $is_admin = 'False';
+         }
+        
         echo "<tr>
+                <td>$user_id</td>
                 <td>$username</td>
-                <td>$city</td>
-                <td>$phone</td>
                 <td>$email</td>
-              </tr>";
+                <td>$is_admin</td>
+
+                <td>
+                 <a class='btn btn-primary' href='toggle_admin.php?user_id=$user_id'>Change Admin</a>
+                 <a class='btn btn-danger' href='delete_user.php?user_id=$user_id'>Delete</a>
+                </td>
+
+            </tr>";
+         
      }
 
-        echo "<tbody>
-            </table>";
-    
+     echo "</tbody>
+     </table>";
+
+
     ?>
 
-    
 
-        </div>
-    </div>
 
+     </div>
       <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 

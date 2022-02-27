@@ -69,7 +69,7 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
+          echo "<a href='profile.php'>Hello, $username</a>";
           
           ?>
 

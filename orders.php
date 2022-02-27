@@ -72,7 +72,7 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
+          echo "<a href='profile.php'>Hello, $username</a>";
           
           ?>
 
@@ -96,11 +96,11 @@ if (!isset($_SESSION['username'])) {
               ?>
               <a href="orders.php">Orders</a>
   
-              <a href='display_addresses.php'>Addresses</a>
+              <a href='display_addresses.php'>Addresses</a> 
 
-              <a href="admin.php">Admin</a>
+              <a href="users.php">Users</a>
 
-            <a href="logout_handler.php?">Logout</a>
+              <a href="logout_handler.php?">Logout</a>
 
 
 

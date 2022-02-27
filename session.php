@@ -8,6 +8,21 @@ if (!isset($_SESSION['username'])) {
   header('Location: login.html');
 }
 
+$username = $_SESSION['username'];
+
+$select_sql = "select * from users where username = '$username'";
+
+$user_array = mysqli_query($connection, $select_sql);
+
+$user = mysqli_fetch_assoc($user_array);
+
+$is_admin = $user['is_admin'];
+
+if(!$is_admin) {
+  header('Location: index.php');
+  die();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +88,7 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='profile.php'>Hello, $username</a>";
+          echo "<a href='#'>Hello, $username</a>";
           
           ?>
 
@@ -86,7 +101,7 @@ if (!isset($_SESSION['username'])) {
               $products = mysqli_query($connection, $sql);
 
               $total_quantity = 0;
-              
+
               foreach($products as $product) {
 
                 $product_quantity = $product['product_quantity'];
@@ -94,12 +109,17 @@ if (!isset($_SESSION['username'])) {
 
               }
 
-              ?>
-              <a href="orders.php">Orders</a>
+            //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
+
+          ?>
+            <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
 
-          <a href="logout_handler.php?">Logout</a>
+            <a href="users.php">Users</a>
+
+            <a href="logout_handler.php?">Logout</a>
+
 
         </div>
         
@@ -107,54 +127,60 @@ if (!isset($_SESSION['username'])) {
     </nav>
 
     <!-- body-->
+<div class="container mt-5">
 
-    <div class="container mt-5">
 
-        <div class="row">
+  <?php
+   //$current_time = date("h:i:sa");
 
-    
+   $username = $_SESSION['username'];
 
-    <?php 
+   $select_sessions = "select * from session";
 
-     $sql = "select * from address";
+   $sessions = mysqli_query($connection, $select_sessions);
 
-     $addresses = mysqli_query($connection, $sql);
-
-     echo "<table>
+   echo "<table class='mx-5'>
             <thead>
-                <th>Username</th>
-                <th>City</th>
-                <th>Phone</th>
-                <th>Email</th>
+              <th>USERNAME</th>
+              <th>Sign_in_time</th>
+              <th>sign_out_time</th>
+              <th>STATUS</th>
             </thead>
             <tbody>";
+   foreach($sessions as $session) {
+       $username = $session['username'];
+       $sign_in_time = $session['sign_in_time'];
+       $sign_out_time = $session['sign_out_time'];
 
-     foreach($addresses as $address) {
-         $username = $address['username'];
-         $city = $address['city'];
-         $phone = $address['phone'];
-         $email = $address['email'];
+ 
+       $status = '';
 
-        echo "<tr>
-                <td>$username</td>
-                <td>$city</td>
-                <td>$phone</td>
-                <td>$email</td>
-              </tr>";
-     }
+       if($sign_out_time == '') {
+           $status = 'logged in';
 
-        echo "<tbody>
-            </table>";
-    
-    ?>
+       } else {
+           $status = 'logged out';
+       }
 
-    
+echo "<tr>
+        <td>$username</td>
+        <td>$sign_in_time</td>
+        <td>$sign_out_time</td>
+        <td>$status</td>
+      </tr>";
+   }
+   
+     ?>
 
-        </div>
-    </div>
 
+   </div>
       <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>
+
+
+
+
+

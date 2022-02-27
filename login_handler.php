@@ -22,8 +22,28 @@ if (isset($_POST['login'])) {
 
     //Check if user exists
     if ($row == 1) {
-        
+
         $_SESSION['username'] = $username;
+
+        $sign_in_time = date('h:i:sa');
+        $username = $_SESSION['username'];
+        
+        $check_if_session_exists_sql = "select * from session where username = '$username' and sign_out_time = '' ";
+
+        $session = mysqli_query($connection, $check_if_session_exists_sql);
+
+        $num = mysqli_num_rows($session);
+
+        if ($num < 1) {
+            
+         $insert_sql = "insert into session (username, sign_in_time) values('$username', '$sign_in_time')";
+
+         $inserted = mysqli_query($connection, $insert_sql);
+
+        }
+
+
+
 
         header('Location: index.php');
         

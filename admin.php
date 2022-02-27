@@ -8,6 +8,21 @@ if (!isset($_SESSION['username'])) {
   header('Location: login.html');
 }
 
+$username = $_SESSION['username'];
+
+$select_sql = "select * from users where username = '$username'";
+
+$user_array = mysqli_query($connection, $select_sql);
+
+$user = mysqli_fetch_assoc($user_array);
+
+$is_admin = $user['is_admin'];
+
+if(!$is_admin) {
+  header('Location: index.php');
+  die();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +88,7 @@ if (!isset($_SESSION['username'])) {
           
           <?php
           $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
+          echo "<a href='profile.php'>Hello, $username</a>";
           
           ?>
 
@@ -101,8 +116,11 @@ if (!isset($_SESSION['username'])) {
 
             <a href='display_addresses.php'>Addresses</a>
 
-            <a href="logout_handler.php?">Logout</a>
+            <a href="users.php">Users</a>
 
+            <a href="session.php">Session</a>
+
+            <a href="logout_handler.php?">Logout</a>
 
 
         </div>
@@ -112,11 +130,18 @@ if (!isset($_SESSION['username'])) {
 
     <!-- body-->
 
-    <?php 
+    <div class="container mt-5">
 
+    <?php 
+      $username = $_SESSION['username'];
+
+      echo "<h2 class='text-center'>Hello, $username!</h2>
+      <p class='text-center'>You are seeing this because you are an admin.</p>";
 
 
     ?>
+    </div>
+
 
 
 
