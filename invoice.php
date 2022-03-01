@@ -127,7 +127,7 @@ if (!isset($_SESSION['username'])) {
         $total_charge = 0;
 
         echo "<div class='row'>
-                <th><span class='text-center'>INVOICE</span><th>
+                <th><span class='text-center'>ORDER SUMMARY</span><th>
                 <table>
                       <thead>
                       <tr>
@@ -225,7 +225,7 @@ if (!isset($_SESSION['username'])) {
 
             echo "
                 <tr>
-                    <td colspan=3><span style='font-weight: bold;'>Transport</span></td>
+                    <td colspan=3><span style='font-weight: bold;'>Delivery cCost</span></td>
                     <td>$transport_charge</td>
                </tr>
 
@@ -239,10 +239,12 @@ if (!isset($_SESSION['username'])) {
         ";
 
         echo "<br ><br > 
+
         <button class='btn btn-success'>Proceed to pay</button>";
 
        ?>
 
+            <button onclick="window.print()">Print this page</button>
 
 
     </div>

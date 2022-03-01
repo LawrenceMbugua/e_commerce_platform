@@ -116,6 +116,7 @@ if (!isset($_SESSION['username'])) {
     if (isset($_GET['not_found'])) {
 
       $not_found = $_GET['not_found'];
+      $not_found= "Product not found!";
       
       echo "<p class='text-danger text-center mt-1'>$not_found</p>";
       

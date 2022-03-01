@@ -96,8 +96,10 @@ if (!isset($_SESSION['username'])) {
               }
 
               echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
-          ?>
 
+              ?>
+
+            <a href="logout_handler.php?">Logout</a>  
 
         </div>
         
@@ -119,12 +121,12 @@ if (!isset($_SESSION['username'])) {
 
 
      
-      if($search == null ) {
-          header('Location: index.php');
-          die();
-      }
+      // if($search == null ) {
+      //     header('Location: index.php');
+      //     die();
+      // }
 
-
+       $present = 1;
        $tables = array("electronics", "fashion", "consumer_goods", "education", "hardware", "furniture");
 
        foreach($tables as $table) {
@@ -133,7 +135,8 @@ if (!isset($_SESSION['username'])) {
            $products = mysqli_query($connection, $sql);
 
           if ($products) {
-          $present = 0;
+
+          
           foreach ($products as $row) {
               $product_name = $row['product_name'];
               $product_image = $row['product_image'];
@@ -146,21 +149,23 @@ if (!isset($_SESSION['username'])) {
               echo "<div class='col-md-3'>
                       <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='width:100px'></a>
                       <p>$product_name</p>
-                      <p>Ksh.$product_price</p>
+                      <p>Ksh. $product_price</p>
                    </div>
                   <br>
                 ";
               
                 } 
 
-                if ($present == 0) {
-                    $not_found = "Product not found!";
-                    header("Location: index.php?not_found=$not_found");
-                }
+                
               } 
 
             }
 
+             if ($present === 1) {
+                    $not_found = "0";
+                    //echo "Not Found!";
+                    header("Location: index.php?not_found=$not_found");
+             }
          }  
 
         
