@@ -18,10 +18,14 @@ $user = mysqli_fetch_assoc($user_array);
 
 $is_admin = $user['is_admin'];
 
+
+
 if(!$is_admin) {
-  header('Location: index.php');
+  $message = "Access Denied! You are not an admin.";
+  header("Location: index.php?message=$message");
   die();
 }
+
 
 ?>
 
@@ -112,6 +116,8 @@ if(!$is_admin) {
             //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
 
           ?>
+            <a href="products.php">Products</a>
+
             <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
@@ -136,7 +142,7 @@ if(!$is_admin) {
       $username = $_SESSION['username'];
 
       echo "<h2 class='text-center'>Hello, $username!</h2>
-      <p class='text-center'>You are seeing this because you are an admin.</p>";
+      <p class='text-center text-success'>You are seeing this because you are an admin.</p>";
 
 
     ?>

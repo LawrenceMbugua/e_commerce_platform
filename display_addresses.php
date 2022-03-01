@@ -99,6 +99,10 @@ if (!isset($_SESSION['username'])) {
 
             <a href='display_addresses.php'>Addresses</a>
 
+            <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
+
           <a href="logout_handler.php?">Logout</a>
 
         </div>

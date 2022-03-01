@@ -100,6 +100,8 @@ if (!isset($_SESSION['username'])) {
 
               <a href="users.php">Users</a>
 
+              <a href="session.php">Session</a>
+
               <a href="logout_handler.php?">Logout</a>
 
 
@@ -133,7 +135,7 @@ if (!isset($_SESSION['username'])) {
                             <th>Product ID</th>
                             <th>Product Price</th>
                             <th>Product Quantity</th>
-                            <th>Ordered Time</th>
+                            <th>Ordered at</th>
                             <th>Order Number</th>
                             <th>Status</th>
                             <th>Action</th>
