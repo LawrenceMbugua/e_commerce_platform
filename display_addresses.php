@@ -124,7 +124,7 @@ if (!isset($_SESSION['username'])) {
 
      $addresses = mysqli_query($connection, $sql);
 
-     echo "<table>
+     echo "<table class='table table-hover table-bordered'>
             <thead>
                 <th>Username</th>
                 <th>City</th>

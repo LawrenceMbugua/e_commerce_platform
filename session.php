@@ -112,11 +112,15 @@ if(!$is_admin) {
             //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
 
           ?>
+            <a href="products.php">Products</a>
+
             <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
 
             <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
 
             <a href="logout_handler.php?">Logout</a>
 
@@ -139,7 +143,7 @@ if(!$is_admin) {
 
    $sessions = mysqli_query($connection, $select_sessions);
 
-   echo "<table class='mx-5'>
+   echo "<table class='table mx-5 table table-hover table-bordered text-center'>
             <thead>
               <th>USERNAME</th>
               <th>Sign_in_time</th>
@@ -164,8 +168,8 @@ if(!$is_admin) {
 
 echo "<tr>
         <td>$username</td>
-        <td>$sign_in_time</td>
-        <td>$sign_out_time</td>
+        <td><p class='text-success'>$sign_in_time</p></td>
+        <td><p class='text-danger'>$sign_out_time</p></td>
         <td>$status</td>
       </tr>";
    }

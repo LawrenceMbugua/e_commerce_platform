@@ -24,8 +24,11 @@ if (isset($_POST['login'])) {
     if ($row == 1) {
 
         $_SESSION['username'] = $username;
+             
+        date_default_timezone_set('Africa/Nairobi');
 
-        $sign_in_time = date('h:i:sa');
+        $sign_in_time = date('Y-m-d H:i:s', time());
+
         $username = $_SESSION['username'];
         
         $check_if_session_exists_sql = "select * from session where username = '$username' and sign_out_time = '' ";

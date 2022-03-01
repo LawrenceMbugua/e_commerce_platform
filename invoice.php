@@ -128,7 +128,7 @@ if (!isset($_SESSION['username'])) {
 
         echo "<div class='row'>
                 <th><span class='text-center'>ORDER SUMMARY</span><th>
-                <table>
+                <table class='table'>
                       <thead>
                       <tr>
                         <th>Product Name</th>
@@ -225,7 +225,7 @@ if (!isset($_SESSION['username'])) {
 
             echo "
                 <tr>
-                    <td colspan=3><span style='font-weight: bold;'>Delivery cCost</span></td>
+                    <td colspan=3><span style='font-weight: bold;'>Delivery Cost</span></td>
                     <td>$transport_charge</td>
                </tr>
 
@@ -244,14 +244,8 @@ if (!isset($_SESSION['username'])) {
 
        ?>
 
-            <button onclick="window.print()">Print this page</button>
-
 
     </div>
-
-
-
-
 
       </body>
 </html>

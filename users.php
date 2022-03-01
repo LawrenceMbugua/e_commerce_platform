@@ -31,19 +31,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 
-    <style>
-        table, th, td {
-            border: 1px solid;
-
-        }
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-
-        }
-    </style>
   </head>
   <body>
 
@@ -97,11 +84,15 @@ if (!isset($_SESSION['username'])) {
             //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
 
           ?>
+            <a href="products.php">Products</a>
+
             <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
 
             <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
 
             <a href="logout_handler.php?">Logout</a>
 
@@ -123,7 +114,7 @@ if (!isset($_SESSION['username'])) {
 
      $users = mysqli_query($connection, $sql);
 
-     echo "<table>
+     echo "<table class='table'>
             <thead>
               <th>User Id</th>
               <th>Username</th>

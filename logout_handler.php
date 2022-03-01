@@ -18,8 +18,9 @@ $username = $_SESSION['username'];
 //mysqli_query($connection, $check_sign_out);
 
 
+date_default_timezone_set('Africa/Nairobi');
 
-$sign_out_time = date('h:i:sa');
+$sign_out_time = date('Y-m-d H:i:s', time());
 
 $update_sql = "update session set sign_out_time = '$sign_out_time' where username = '$username' and sign_out_time = ''";
 

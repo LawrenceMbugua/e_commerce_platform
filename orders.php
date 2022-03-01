@@ -94,15 +94,18 @@ if (!isset($_SESSION['username'])) {
               }
 
               ?>
-              <a href="orders.php">Orders</a>
-  
-              <a href='display_addresses.php'>Addresses</a> 
 
-              <a href="users.php">Users</a>
+            <a href="products.php">Products</a>
 
-              <a href="session.php">Session</a>
+            <a href="orders.php">Orders</a>
 
-              <a href="logout_handler.php?">Logout</a>
+            <a href='display_addresses.php'>Addresses</a>
+
+            <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
+
+            <a href="logout_handler.php?">Logout</a>
 
 
 
@@ -126,7 +129,8 @@ if (!isset($_SESSION['username'])) {
           <div class='container mt-5'>
         <div class='row'>
             <div class='col-sm-12'>
-                <table>
+                <h3 class='text-center text-danger'>ORDERS</h2>
+                <table class='table table-hover table-bordered table-striped'>
                     <thead>
                         <tr>
                             <th>Username</th>

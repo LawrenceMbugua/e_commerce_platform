@@ -27,17 +27,7 @@ if (!isset($_SESSION['username'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-      ul > li {
-        list-style-type: none;
-        border-bottom: 1px solid;
-        margin-left: 0px;
-        text-align: left;
-        padding: 10px 10px;
-      }
-
-      ul > li > a {
-        text-decoration: none;
-      }
+   
 
     </style>
   </head>
@@ -92,6 +82,16 @@ if (!isset($_SESSION['username'])) {
 
               echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
           ?>
+
+            <a href="products.php">Products</a>
+
+            <a href="orders.php">Orders</a>
+
+            <a href='display_addresses.php'>Addresses</a>
+
+            <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
 
             <a href="logout_handler.php?">Logout</a>
 

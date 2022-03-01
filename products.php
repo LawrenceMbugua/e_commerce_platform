@@ -30,19 +30,6 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 
-    <style>
-        table, th, td {
-            border: 1px solid;
-
-        }
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-
-        }
-    </style>
   </head>
   <body>
 
@@ -94,15 +81,17 @@ if (!isset($_SESSION['username'])) {
               }
 
               ?>
-              <a href="orders.php">Orders</a>
-  
-              <a href='display_addresses.php'>Addresses</a> 
+            <a href="products.php">Products</a>
 
-              <a href="users.php">Users</a>
+            <a href="orders.php">Orders</a>
 
-              <a href="session.php">Session</a>
+            <a href='display_addresses.php'>Addresses</a>
 
-              <a href="logout_handler.php?">Logout</a>
+            <a href="users.php">Users</a>
+
+            <a href="session.php">Session</a>
+
+            <a href="logout_handler.php?">Logout</a>
 
 
 
@@ -123,14 +112,14 @@ if (!isset($_SESSION['username'])) {
             echo "<h6 class='text-white text-center py-2 ' style='background: rgb(139, 158, 109);'>$message</h6>";
         }
      ?>
-
-      <form class='border p-5 bg-light' action="insert_products.php" method='post'>
+        <h3 class='text-center text-primary'>INSERT A PRODUCT</h3>
+      <form class='border p-2 bg-light' action="insert_products.php" method='post'>
 
         <div class="form-group">
             <label for="product_category">Product Category</label>
 
             <select class='form-control' name="product_category" id="product_category">
-                
+
                 <option value="electronics">Electronics</option>
                 <option value="fashion">Fashion</option>
                 <option value="consumer_goods">Consumer Goods</option>
@@ -139,8 +128,6 @@ if (!isset($_SESSION['username'])) {
                 <option value="furniture">Furniture</option>
 
             </select>
-
-            <input class='form-control' required type="text" id='product_category' name='product_category' class="form-control">
             <br><br>
         </div>
 
@@ -183,9 +170,11 @@ if (!isset($_SESSION['username'])) {
 
            $sql = "select * from $table";
            $products = mysqli_query($connection, $sql);
-            echo "<br><br><h2>$table</h2>";
-         echo "<table>
+            echo "<br><br>
+            <h2 class='text-center text-primary'>$table</h2>";
+         echo "<table class='table table-hover table-bordered'>
                  <thead>
+                  <tr>
                     <th>Image</th>
                     <th>Product ID</th>
                     <th>Product Name</th>
@@ -193,6 +182,7 @@ if (!isset($_SESSION['username'])) {
                     <th>Product Category</th>
                     <th>Product Description</th> 
                     <th>Action</th>
+                  </tr>
                  </thead>
                  <tbody>";
 
@@ -214,9 +204,9 @@ if (!isset($_SESSION['username'])) {
                  <td>$product_description</td>
                  <td>
 
-                   <a class='text-success' href='update_products.php?product_id=$product_id&product_category=$product_category'>Update</a>
+                   <a class='btn btn-primary' href='update_products.php?product_id=$product_id&product_category=$product_category'>Update</a>
 
-                   <a class='text-danger' href='delete_products.php?product_id=$product_id&product_category=$product_category'>Delete</a>
+                   <a class='btn btn-danger' href='delete_products.php?product_id=$product_id&product_category=$product_category'>Delete</a>
 
                  </td>
               </tr>
