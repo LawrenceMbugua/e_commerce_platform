@@ -121,9 +121,9 @@ if (!isset($_SESSION['username'])) {
 
 
               echo "<div class='col-md-4' '>
-                      <img src='$product_image' alt='img' style='width:200px'>
+                      <img src='$product_image' alt='img' style='height: 400px; width:420px'>
                       <p>$product_name</p>
-                      <p>Ksh.$product_price</p>
+                      <p>Ksh.<span class='text-success'>$product_price</span></p>
                       <p>$product_description</p>
                   </div>
                   <div class='col-md-4' '>

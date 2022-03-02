@@ -29,19 +29,6 @@ if (!isset($_SESSION['username'])) {
     <!-- bootstrap icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-    <style>
-        table, th, td {
-            border: 1px solid;
-
-        }
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-
-        }
-    </style>
 
   </head>
   <body>
@@ -124,7 +111,7 @@ if (!isset($_SESSION['username'])) {
      $addresses = mysqli_query($connection, $sql);
 
 
-     echo "<table class='table'>
+     echo "<table class='table table-hover table-bordered table-striped'>
             <thead>
                 <th>Username</th>
                 <th>City</th>
