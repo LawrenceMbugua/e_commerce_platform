@@ -38,7 +38,13 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
+
         <button
           class="navbar-toggler"
           type="button"
@@ -114,7 +120,7 @@ if (!isset($_SESSION['username'])) {
 
      $users = mysqli_query($connection, $sql);
 
-     echo "<table class='table'>
+     echo "<table class='table fs-5'>
             <thead>
               <th>User Id</th>
               <th>Username</th>

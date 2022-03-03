@@ -37,7 +37,11 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>        
+
         <button
           class="navbar-toggler"
           type="button"
@@ -112,7 +116,7 @@ if (!isset($_SESSION['username'])) {
             echo "<h6 class='text-white text-center py-2 ' style='background: rgb(139, 158, 109);'>$message</h6>";
         }
      ?>
-        <h3 class='text-center text-primary'>INSERT A PRODUCT</h3>
+        <h3 class='text-center text-warning font-weight-bold'>INSERT A PRODUCT</h3>
       <form class='border p-2 bg-light' action="insert_products.php" method='post'>
 
         <div class="form-group">
@@ -128,31 +132,31 @@ if (!isset($_SESSION['username'])) {
                 <option value="furniture">Furniture</option>
 
             </select>
-            <br><br>
+            <br>
         </div>
 
         <div class="form-group">
             <label for="product_name">Product Name</label>
             <input class='form-control' required type="text" id='product_name' name='product_name' class="form-control">
-            <br><br>
+            <br>
         </div>
 
         <div class="form-group">
             <label for="product_price">Product Price</label>
             <input class='form-control' required type="text" id='product_price' name='product_price' class="form-control">
-            <br><br>
+            <br>
         </div>
 
         <div class="form-group">
             <label for="product_image">Product Image</label>
             <input class='form-control' required type="text" id='product_image' name='product_image' class="form-control">
-            <br><br>
+            <br>
         </div>
 
         <div class="form-group">
             <label for="product_description">Product Description</label>
             <input class='form-control' required type="text" id='product_description' name='product_description' class="form-control">
-            <br><br>
+            <br>
         </div>
 
         <input type="submit" class='btn btn-warning' name='insert' value='Add Product'>
@@ -170,9 +174,13 @@ if (!isset($_SESSION['username'])) {
 
            $sql = "select * from $table";
            $products = mysqli_query($connection, $sql);
+
+
+
             echo "<br><br>
-            <h2 class='text-center text-primary'>$table</h2>";
-         echo "<table class='table table-hover table-bordered'>
+            <h2 class='text-center text-danger' style='text-decoration: underline; text-transform: uppercase;'>$table</h2>";
+
+         echo "<table class='table table-hover table-bordered' style='font-size: 18px;'>
                  <thead>
                   <tr>
                     <th>Image</th>
@@ -202,20 +210,21 @@ if (!isset($_SESSION['username'])) {
                  <td>$product_price</td>
                  <td>$product_category</td>
                  <td>$product_description</td>
-                 <td>
 
-                   <a class='btn btn-primary' href='update_products.php?product_id=$product_id&product_category=$product_category'>Update</a>
+                 <td style='display: flex; justify-content: space-between; align-items: center;'>
 
+                   <a class='btn btn-info' href='update_products.php?product_id=$product_id&product_category=$product_category'>Update</a>
+                  
                    <a class='btn btn-danger' href='delete_products.php?product_id=$product_id&product_category=$product_category'>Delete</a>
 
                  </td>
+
               </tr>
             ";
               
               }
               echo "</tbody>
-              </table>
-                 ";
+              </table> ";
 
        }
 

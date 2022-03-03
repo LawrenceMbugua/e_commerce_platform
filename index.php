@@ -43,15 +43,32 @@ if (!isset($_SESSION['username'])) {
         text-decoration: none;
       }
 
+      .product_container {
+        width: 200px;
+        border-radius: 5px;
+        
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3), 0 7px 21px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .product_container:hover {
+        
+      }
+
     </style>
   </head>
   <body>
 
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
-      <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">quickShop</a>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed responsive fixed-top">
+      <div class="container-fluid" style='display: flex; justify-content: space-around; '>
+
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
+
         <button
           class="navbar-toggler"
           type="button"
@@ -110,8 +127,12 @@ if (!isset($_SESSION['username'])) {
     </nav>
 
     <!-- body-->
+    <br>
+    
 
-    <?php
+    <div class="container mt-1">
+      <div class="row mt-5">
+        <?php
 
     if (isset($_GET['not_found'])) {
 
@@ -127,9 +148,6 @@ if (!isset($_SESSION['username'])) {
 
     }
      ?>
-
-    <div class="container" style="margin-top: 40px">
-      <div class="row">
         <div class="category col-md-3" >
 
         <ul>
@@ -159,10 +177,10 @@ if (!isset($_SESSION['username'])) {
       <!-- The slideshow/carousel -->
       <div class="carousel-inner">
         <div class="carousel-item active" style='height: 400px;'>
-          <img src="./assets/mac.jpg" alt="image" class="d-block w-100" style='height: 400px;' >
+          <img src="./assets/hoodie.jpg"  alt="image" class="d-block w-100" style='height: 400px;' >
         </div>
         <div class="carousel-item" style='height: 400px;'>
-          <img src="assets/hoodie.jpg" alt="image" class="d-block w-100" style='height: 400px;'>
+          <img src="./assets/mac.jpg" alt="image" class="d-block w-100" style='height: 400px;'>
         </div>
         <div class="carousel-item" style='height: 400px;'>
           <img src="assets/chair.jpg" alt="image" class="d-block w-100" style='height: 400px;'>
@@ -208,10 +226,22 @@ if (!isset($_SESSION['username'])) {
               $product_category = $row['product_category'];
               $product_id = $row['product_id'];
 
-              echo "<div class='col-md-3'>
-                      <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='width:100px'></a>
-                      <p>$product_name</p>
-                      <p>Ksh.$product_price</p>
+              echo "<div class='col-12 col-sm-6 col-md-4 col-xl-3  my-2' >
+
+                    <div class='product_container '>
+
+                      <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='max-width: 100%'></a>
+
+                        <div class='text-center fs-5' style='padding: 5px; '>
+
+                          <p>$product_name</p>
+                          <p>Ksh.$product_price</p>
+
+                        </div>
+
+                      </div>
+
+
                   </div>
                   <br>
                 ";
@@ -230,7 +260,11 @@ if (!isset($_SESSION['username'])) {
 
      </div>
 
+      <div class="footer bg-dark text-white mt-5 px-5 py-5" style='height: 30vh;'>
 
+        <p class='me-0'> &copy; Copyright 2022 | All Rights Reserved.</p>
+
+      </div>
 
       <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

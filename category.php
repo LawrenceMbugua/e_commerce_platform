@@ -26,7 +26,16 @@ if (!isset($_SESSION['username'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+        .product_container {
+        width: 200px;
+        border-radius: 5px;
+        
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3), 0 7px 21px 0 rgba(0, 0, 0, 0.2);
+      }
 
+      .product_container:hover {
+        
+      }
     </style>
   </head>
   <body>
@@ -35,7 +44,11 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -121,10 +134,19 @@ if (!isset($_SESSION['username'])) {
               $product_category = $product['product_category'];
               $product_id = $product['product_id'];
 
-              echo "<div class='col-md-3'>
-                      <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='width:100px'></a>
-                      <p>$product_name</p>
-                      <p>Ksh.$product_price</p>
+              echo "<div  class='col-12 col-sm-6 col-md-4 col-xl-3 my-2'>
+                      <div class='product_container'>
+
+
+                          <a href='product_details.php?product_category=$product_category&product_id=$product_id'><img src='$product_image' alt='img' style='max-width: 100%'></a>
+
+                          <div class='text-center fs-5' style='padding: 5px; '>
+                            <p>$product_name</p>
+                            <p>Ksh.$product_price</p>
+                          </div>
+
+                      </div>
+
                   </div>
                   <br>
                 ";
@@ -142,6 +164,7 @@ if (!isset($_SESSION['username'])) {
 
      </div>
 
+  
 
 
       <!-- Latest compiled JavaScript -->

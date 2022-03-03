@@ -39,8 +39,9 @@ if (isset($_POST['register'])) {
 
     //Else if there's such a name redirect to login with an error
     } else {
-        $message = "Username already exists!";
-        header("Location: login.php?message=$message");
+        $error_message = 0;
+
+        header("Location: login.php?message=$error_message");
     }
 }
 

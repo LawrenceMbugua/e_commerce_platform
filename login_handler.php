@@ -54,7 +54,7 @@ if (isset($_POST['login'])) {
         
     } else {
 
-        $invalid_message = "Wrong username or password!";
+        $invalid_message = 0;
         header("Location: login.php?invalid_message=$invalid_message");
       
     }

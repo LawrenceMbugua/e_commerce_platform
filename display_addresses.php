@@ -51,7 +51,13 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
+
         <button
           class="navbar-toggler"
           type="button"
@@ -95,6 +101,8 @@ if (!isset($_SESSION['username'])) {
               }
 
               ?>
+              <a href="products.php">Products</a>
+
               <a href="orders.php">Orders</a>
 
             <a href='display_addresses.php'>Addresses</a>
@@ -103,7 +111,8 @@ if (!isset($_SESSION['username'])) {
 
             <a href="session.php">Session</a>
 
-          <a href="logout_handler.php?">Logout</a>
+          <a href="logout_handler.php">Logout</a>
+
 
         </div>
         
@@ -124,7 +133,7 @@ if (!isset($_SESSION['username'])) {
 
      $addresses = mysqli_query($connection, $sql);
 
-     echo "<table class='table table-hover table-bordered'>
+     echo "<table class='table table-hover table-bordered fs-5'>
             <thead>
                 <th>Username</th>
                 <th>City</th>

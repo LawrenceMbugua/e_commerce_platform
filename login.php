@@ -18,7 +18,11 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid">
-        <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -28,21 +32,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
-          <!-- <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)">Link</a>
-            </li>
-          </ul> -->
-          <!-- <form action="search_handler.php" method="get" class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Search" />
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form> -->
         </div>
       </div>
     </nav>
@@ -51,7 +40,7 @@
     <div class="container" style="margin-top: 80px">
       <div class="row">
         <!-- Login here -->
-        <div class="col-md-6 login">
+        <div class="col-md-6 ">
           <h2>Login here</h2>
           <?php 
 
@@ -59,13 +48,14 @@
 
           if (isset($_GET['invalid_message'])) {
             $invalid_message = $_GET['invalid_message'];
-
+ 
+            $invalid_message = "Wrong username or password!";
             echo "<p class='text-danger'>$invalid_message</p>";
           }
           
           ?>
           
-          <form action="login_handler.php" method="post">
+          <form action="login_handler.php" class='bg-light border p-3' method="post">
             <div class="form-group">
               <input
                 type="text"
@@ -102,12 +92,18 @@
 
 
           if (isset($_GET['message'])) {
+
             $message = $_GET['message'];
+            $message = "Username already exists!";
             echo "<p class='text-danger'>$message</p>";
+            
           }
            
+
           ?>
+
           <form
+          class='bg-light border p-3'
             name="myForm"
             action="register_handler.php"
             method="post"

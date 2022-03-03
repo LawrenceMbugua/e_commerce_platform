@@ -30,19 +30,7 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 
-    <style>
-        table, th, td {
-            border: 1px solid;
 
-        }
-        table {
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-
-        }
-    </style>
   </head>
   <body>
 
@@ -50,7 +38,11 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -126,11 +118,11 @@ if (!isset($_SESSION['username'])) {
 
 
     echo "
-          <div class='container mt-5'>
+          <div class='container-fluid mt-5'>
         <div class='row'>
             <div class='col-sm-12'>
                 <h3 class='text-center text-danger'>ORDERS</h2>
-                <table class='table table-hover table-bordered table-striped'>
+                <table class='table table-hover table-bordered table-striped fs-5'>
                     <thead>
                         <tr>
                             <th>Username</th>

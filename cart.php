@@ -36,7 +36,11 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+        
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -94,6 +98,7 @@ if (!isset($_SESSION['username'])) {
       </div>
     </nav>
 
+
  <?php
 
            
@@ -105,6 +110,7 @@ if (!isset($_SESSION['username'])) {
            $items = mysqli_query($connection, $cart_sql);
 
            $total_price = 0;
+
             echo "
             <div class='container mt-5'>  
 
@@ -114,6 +120,9 @@ if (!isset($_SESSION['username'])) {
             ";
                 
               if ($total_quantity > 0) {
+
+                echo "<h3 class='text-warning text-center'>Here are the items in your cart</h3>";
+
                 foreach($items as $item) {
 
                   $product_category = $item['product_category'];
@@ -138,8 +147,6 @@ if (!isset($_SESSION['username'])) {
                 
                   
                 echo "
-                    
-
                         <div  style='display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid; width: 95%; background: whitesmoke;'>
 
                             <div class='product_details' style='width: 300px;'>

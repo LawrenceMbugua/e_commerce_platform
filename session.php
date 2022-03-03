@@ -66,7 +66,11 @@ if(!$is_admin) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -143,7 +147,7 @@ if(!$is_admin) {
 
    $sessions = mysqli_query($connection, $select_sessions);
 
-   echo "<table class='table mx-5 table table-hover table-bordered text-center'>
+   echo "<table class='table mx-5 table table-hover table-bordered text-center fs-5'>
             <thead>
               <th>USERNAME</th>
               <th>Sign_in_time</th>

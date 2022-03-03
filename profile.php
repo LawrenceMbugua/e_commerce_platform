@@ -37,7 +37,13 @@ if (!isset($_SESSION['username'])) {
     <!--Navbar-->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
       <div class="container-fluid" style='display: flex; justify-content: space-around;'>
-        <a class="navbar-brand" href="index.php">Logo</a>
+
+
+        <a class="navbar-brand" href="index.php">
+          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+        </a>
+
+
         <button
           class="navbar-toggler"
           type="button"
@@ -101,7 +107,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="row">
 
-    
+    <h3 class='text-warning text-center'>Your Address details are shown below</h3>
 
     <?php 
 
@@ -134,7 +140,7 @@ if (!isset($_SESSION['username'])) {
                 <td>$city</td>
                 <td>$phone</td>
                 <td>$email</td>
-                <td><a href='profile.php?update=$secret'>UPDATE</a></td>
+                <td><a class='btn btn-info' href='profile.php?update=$secret'>UPDATE</a></td>
               </tr>";
      }
 
@@ -199,8 +205,6 @@ if (!isset($_SESSION['username'])) {
             }
     
     ?>
-
-    
 
         </div>
     </div>

@@ -144,47 +144,47 @@ if (!isset($_SESSION['username'])) {
             
                 <div class='form-group'>
 
-                    <label for='product_id'>Product ID</label>
+                    <label for='product_id' class='text-secondary fs-5'>Product ID</label>
                     <input class='form-control' id='product_id' value='$product_id' name='product_id' type='text' readonly>
-                    <br></br>
+                    </br>
                 </div>
 
                 <div class='form-group'>
 
-                    <label for='product_category'>Product Category</label>
+                    <label for='product_category' class='text-secondary fs-5'>Product Category</label>
                     <input class='form-control' id='product_category' value='$product_category' name='product_category' type='text' readonly>
-                    <br></br>
+                    </br>
                 </div>
 
                 <div class='form-group'>
 
-                    <label for='product_name'>Product Name</label>
+                    <label for='product_name' class='text-secondary fs-5'>Product Name</label>
                     <input class='form-control' id='product_name' value='$product_name' name='product_name' type='text'>
-                    <br></br>
+                    </br>
                 </div>
 
                 <div class='form-group'>
 
-                    <label for='product_price'>Product Price</label>
+                    <label for='product_price' class='text-secondary fs-5'>Product Price</label>
                     <input class='form-control' id='product_price' value='$product_price' name='product_price' type='text'>
-                    <br></br>
+                    </br>
                 </div>
 
                 <div class='form-group'>
 
-                    <label for='product_description'>Product Description</label>
+                    <label for='product_description' class='text-secondary fs-5'>Product Description</label>
                     <input class='form-control' id='product_description' value='$product_description' name='product_description' type='text'>
-                    <br></br>
+                    </br>
                 </div>
 
                 <div class='form-group'>
 
-                    <label for='product_image'>Product Image URL</label>
+                    <label for='product_image' class='text-secondary fs-5'>Product Image URL</label>
                     <input class='form-control' id='product_image' value='$product_image' name='product_image' type='text'>
                     <br></br>
                 </div>
 
-                <input class='btn btn-success' type='submit' name='update' value='update'>
+                <input class=' form-control btn btn-success' type='submit' name='update' value='update'>
               </form>";
         
               }

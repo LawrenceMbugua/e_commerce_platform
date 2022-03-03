@@ -32,8 +32,12 @@ if (!isset($_SESSION['username'])) {
             $product_name = $row['product_name'];
             $product_price = $row['product_price'];
             $product_image = $row['product_image'];
+
+            date_default_timezone_set('Africa/Nairobi');
+
+            $order_time = date('Y-m-d H:i:s', time());
             
-            $order_sql = "insert into orders(username, product_category, product_name, product_id, product_price, product_quantity) values ('$username','$product_category','$product_name','$product_id','$product_price','$product_quantity')";
+            $order_sql = "insert into orders(username, product_category, product_name, product_id, product_price, product_quantity, order_time) values ('$username','$product_category','$product_name','$product_id','$product_price','$product_quantity', '$order_time')";
 
             $inserted = mysqli_query($connection, $order_sql);
 
