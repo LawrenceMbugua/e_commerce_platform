@@ -60,7 +60,7 @@ if (!isset($_SESSION['username'])) {
 
 
     <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed responsive fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
       <div class="container-fluid" style='display: flex; justify-content: space-around; '>
 
 
@@ -86,8 +86,9 @@ if (!isset($_SESSION['username'])) {
           </form>
 
 
-         
           
+
+
           <?php
           $username = $_SESSION['username'];
 
@@ -119,8 +120,6 @@ if (!isset($_SESSION['username'])) {
 
             <a href="logout_handler.php?">Logout</a>
 
-
-
         </div>
         
       </div>
@@ -144,25 +143,30 @@ if (!isset($_SESSION['username'])) {
 
     } else if(  isset($_GET['message']) ) {
       $message = $_GET['message'];
+      $message = "Access Denied! You are not an admin.";
+
       echo "<p class='text-danger text-center mt-1'>$message</p>";
 
     }
      ?>
-        <div class="category col-md-3" >
+        <div class="category col-sm-12 col-md-3" >
 
-        <ul>
-          <li><a href="category.php?product_category=electronics">Electronics</a></li>
-          <li><a href="category.php?product_category=fashion">Fashion</a></li>
-          <li><a href="category.php?product_category=consumer_goods">Consumer goods</a></li>
-          <li><a href="category.php?product_category=education">Education</a></li>
-          <li><a href="category.php?product_category=hardware">Hardware</a></li>
-          <li><a href="category.php?product_category=furniture">Furniture</a></li>
-          
-        </ul>
+
+          <ul>
+
+            <li><a href="category.php?product_category=electronics">Electronics</a></li>
+            <li><a href="category.php?product_category=fashion">Fashion</a></li>
+            <li><a href="category.php?product_category=consumer_goods">Consumer goods</a></li>
+            <li><a href="category.php?product_category=education">Education</a></li>
+            <li><a href="category.php?product_category=hardware">Hardware</a></li>
+            <li><a href="category.php?product_category=furniture">Furniture</a></li>
+            
+          </ul>
+
 
         </div>
 
-        <div class="carousel col-md-6">
+        <div class="carousel col-sm-12 col-md-7">
 
           <!-- Carousel -->
       <div id="demo" class="carousel slide" data-bs-ride="carousel">

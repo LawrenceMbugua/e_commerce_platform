@@ -122,7 +122,7 @@ if (!isset($_SESSION['username'])) {
         <div class='row'>
             <div class='col-sm-12'>
                 <h3 class='text-center text-danger'>ORDERS</h2>
-                <table class='table table-hover table-bordered table-striped fs-5'>
+                <table class='table table-hover table-bordered table-striped fs-5 table-responsive'>
                     <thead>
                         <tr>
                             <th>Username</th>

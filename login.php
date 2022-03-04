@@ -1,3 +1,16 @@
+<?php 
+
+session_start();
+include_once('connection.php');
+
+if (isset($_SESSION['username'])) {
+  header('Location: index.php');
+} 
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +53,7 @@
     <div class="container" style="margin-top: 80px">
       <div class="row">
         <!-- Login here -->
-        <div class="col-md-6 ">
+        <div class="col-12 col-md-6 ">
           <h2>Login here</h2>
           <?php 
 
@@ -86,7 +99,7 @@
         </div>
 
         <!--Register here-->
-        <div class="col-md-6 register">
+        <div class="col-12 col-md-6 ">
           <h2>Register here</h2>
           <?php
 

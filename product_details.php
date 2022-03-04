@@ -124,13 +124,16 @@ if (!isset($_SESSION['username'])) {
            $product_description = $row['product_description'];
 
 
-              echo "<div class='col-md-4' '>
+              echo "<div class='col-sm-12 col-md-8' '>
                       <img src='$product_image' alt='img' style='height: 400px; width:420px'>
                       <p>$product_name</p>
                       <p>Ksh.<span class='text-success'>$product_price</span></p>
                       <p>$product_description</p>
                   </div>
-                  <div class='col-md-4' '>
+
+
+
+                  <div class='col-sm-12 col-md-4' '>
                       
                     <form action='product_details_handler.php' method='post'>
 

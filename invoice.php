@@ -132,7 +132,7 @@ if (!isset($_SESSION['username'])) {
 
         echo "<div class='row'>
                 <th><span class='text-center'>ORDER SUMMARY</span><th>
-                <table class='table'>
+                <table class='table table-responsive'>
                       <thead>
                       <tr>
                         <th>Product Name</th>

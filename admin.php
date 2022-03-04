@@ -21,9 +21,11 @@ $is_admin = $user['is_admin'];
 
 
 if(!$is_admin) {
-  $message = "Access Denied! You are not an admin.";
+
+  $message = 0;
   header("Location: index.php?message=$message");
   die();
+  
 }
 
 

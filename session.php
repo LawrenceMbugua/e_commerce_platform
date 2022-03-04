@@ -147,7 +147,7 @@ if(!$is_admin) {
 
    $sessions = mysqli_query($connection, $select_sessions);
 
-   echo "<table class='table mx-5 table table-hover table-bordered text-center fs-5'>
+   echo "<table class='table mx-5 table table-hover table-bordered text-center fs-5 .table-responsive'>
             <thead>
               <th>USERNAME</th>
               <th>Sign_in_time</th>
@@ -177,6 +177,9 @@ echo "<tr>
         <td>$status</td>
       </tr>";
    }
+
+   echo "</tbody>
+    </table>";
    
      ?>
 
