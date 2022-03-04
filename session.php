@@ -63,76 +63,109 @@ if(!$is_admin) {
   <body>
 
 
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
-      <div class="container-fluid" style='display: flex; justify-content: space-around;'>
+        <!--Navbar-->
 
-        <a class="navbar-brand" href="index.php">
-          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+       <div class="container-fluid">
+
+
+        <a class="navbar-brand fw-bold" href="index.php">
+          <span class='text-warning fw-bold bg-dark' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
         </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mynavbar"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" style='display: flex; justify-content: space-between;' id="mynavbar">
+
+
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+
+
+          <a class="nav-link text-info fw-bold" href="profile.php">
+
+            <?php
+                $username = $_SESSION['username'];
+                echo "Hello, $username";
+              ?>
+
+          </a>
+
+
+
+        </li>
+
+        <li class="nav-item">
+
+          <a  class="nav-link text-warning fw-bold btn btn-primary fw-bold" href="cart.php">
+            Cart 
+            <span class='badge rounded-pill bg-warning '>
+
+                      <?php 
+                        $username = $_SESSION['username'];
+
+                        $sql = "select * from cart where username = '$username';";
+
+                        $products = mysqli_query($connection, $sql);
+
+                        $total_quantity = 0;
+
+                        foreach($products as $product) {
+
+                          $product_quantity = $product['product_quantity'];
+                          $total_quantity += $product_quantity;
+
+                        }
+
+                        echo "$total_quantity";
+
+                      ?>
+
+            </span>
+          </a>
           
-          <form action="search_handler.php" method="post" class="d-flex">
+        </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="products.php">Products</a> 
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="orders.php">Orders</a>
+           </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href='display_addresses.php'>Addresses</a> 
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="users.php">Users</a>
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="session.php">Session</a>
+            </li>
+
+           <li class="nav-item">
+              <a class="nav-link text-info fw-bold" href="logout_handler.php?">Logout</a>
+           </li>
+
+      </ul>
+
+        <form action="search_handler.php" method="post" class="d-flex">
             <input class="form-control me-2" type="text" placeholder="Search" name="search"/>
             <button class="btn btn-primary" type="submit">Search</button>
-          </form>
+        </form>
 
-
-         
-          
-          <?php
-          $username = $_SESSION['username'];
-          echo "<a href='#'>Hello, $username</a>";
-          
-          ?>
-
-
-           <?php 
-              $username = $_SESSION['username'];
-
-              $sql = "select * from cart where username = '$username';";
-
-              $products = mysqli_query($connection, $sql);
-
-              $total_quantity = 0;
-
-              foreach($products as $product) {
-
-                $product_quantity = $product['product_quantity'];
-                $total_quantity += $product_quantity;
-
-              }
-
-            //   echo "<a href='cart.php'><span class='badge rounded-pill bg-warning mx-5'>$total_quantity</span></a>";
-
-          ?>
-            <a href="products.php">Products</a>
-
-            <a href="orders.php">Orders</a>
-
-            <a href='display_addresses.php'>Addresses</a>
-
-            <a href="users.php">Users</a>
-
-            <a href="session.php">Session</a>
-
-            <a href="logout_handler.php?">Logout</a>
-
-
-        </div>
-        
       </div>
+      </div>
+
     </nav>
+
+    <!-- end of Navbar -->
+
 
     <!-- body-->
 <div class="container mt-5">
@@ -149,10 +182,12 @@ if(!$is_admin) {
 
    echo "<table class='table mx-5 table table-hover table-bordered text-center fs-5 .table-responsive'>
             <thead>
-              <th>USERNAME</th>
-              <th>Sign_in_time</th>
-              <th>sign_out_time</th>
-              <th>STATUS</th>
+             <tr class='sticky-top bg-light'>
+                <th>USERNAME</th>
+                <th>Sign_in_time</th>
+                <th>sign_out_time</th>
+                <th>STATUS</th>
+              </tr>
             </thead>
             <tbody>";
    foreach($sessions as $session) {

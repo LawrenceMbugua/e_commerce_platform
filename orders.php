@@ -35,76 +35,109 @@ if (!isset($_SESSION['username'])) {
   <body>
 
 
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed">
-      <div class="container-fluid" style='display: flex; justify-content: space-around;'>
+        <!--Navbar-->
 
-        <a class="navbar-brand" href="index.php">
-          <span class='text-warning fw-bold' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+       <div class="container-fluid">
+
+
+        <a class="navbar-brand fw-bold" href="index.php">
+          <span class='text-warning fw-bold bg-dark' style='border: 1px solid white; padding: 5px; border-radius: 5px;'>cloudMart</span>
         </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mynavbar"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" style='display: flex; justify-content: space-between;' id="mynavbar">
-          
-          <form action="search_handler.php" method="post" class="d-flex">
-            <input class="form-control me-2" type="text" placeholder="Search" name="search"/>
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
 
 
-         
-          
-          <?php
-          $username = $_SESSION['username'];
-          echo "<a href='profile.php'>Hello, $username</a>";
-          
-          ?>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
 
 
-           <?php 
-              $username = $_SESSION['username'];
+          <a class="nav-link text-info fw-bold" href="profile.php">
 
-              $sql = "select * from cart where username = '$username';";
-
-              $products = mysqli_query($connection, $sql);
-
-              $total_quantity = 0;
-
-              foreach($products as $product) {
-
-                $product_quantity = $product['product_quantity'];
-                $total_quantity += $product_quantity;
-
-              }
-
+            <?php
+                $username = $_SESSION['username'];
+                echo "Hello, $username";
               ?>
 
-            <a href="products.php">Products</a>
-
-            <a href="orders.php">Orders</a>
-
-            <a href='display_addresses.php'>Addresses</a>
-
-            <a href="users.php">Users</a>
-
-            <a href="session.php">Session</a>
-
-            <a href="logout_handler.php?">Logout</a>
+          </a>
 
 
 
-        </div>
-        
+        </li>
+
+        <li class="nav-item">
+
+          <a  class="nav-link text-warning fw-bold btn btn-primary fw-bold" href="cart.php">
+            Cart 
+            <span class='badge rounded-pill bg-warning '>
+
+                      <?php 
+                        $username = $_SESSION['username'];
+
+                        $sql = "select * from cart where username = '$username';";
+
+                        $products = mysqli_query($connection, $sql);
+
+                        $total_quantity = 0;
+
+                        foreach($products as $product) {
+
+                          $product_quantity = $product['product_quantity'];
+                          $total_quantity += $product_quantity;
+
+                        }
+
+                        echo "$total_quantity";
+
+                      ?>
+
+            </span>
+          </a>
+          
+        </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="products.php">Products</a> 
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="orders.php">Orders</a>
+           </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href='display_addresses.php'>Addresses</a> 
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="users.php">Users</a>
+            </li>
+
+            <li class='nav-item'>
+              <a class='nav-link text-info fw-bold' href="session.php">Session</a>
+            </li>
+
+           <li class="nav-item">
+              <a class="nav-link text-info fw-bold" href="logout_handler.php?">Logout</a>
+           </li>
+
+      </ul>
+
+        <form action="search_handler.php" method="post" class="d-flex">
+            <input class="form-control me-2" type="text" placeholder="Search" name="search"/>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+
       </div>
+      </div>
+
     </nav>
+
+    <!-- end of Navbar -->
+
 
     <!-- body-->
 
@@ -118,13 +151,14 @@ if (!isset($_SESSION['username'])) {
 
 
     echo "
-          <div class='container-fluid mt-5'>
+        <div class='container-fluid mt-5'>
         <div class='row'>
             <div class='col-sm-12'>
                 <h3 class='text-center text-danger'>ORDERS</h2>
+
                 <table class='table table-hover table-bordered table-striped fs-5 table-responsive'>
                     <thead>
-                        <tr>
+                        <tr class='bg-secondary-light sticky-top'>
                             <th>Username</th>
                             <th>Product Category</th>
                             <th>Product Name</th>
