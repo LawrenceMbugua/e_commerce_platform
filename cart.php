@@ -179,11 +179,11 @@ if (!isset($_SESSION['username'])) {
                               <p>Ksh.$product_price</p>
                             </div>
                           
-                            <a class='btn btn-warning' href='increment_handler.php?product_id=$product_id'>+</a>
+                            <a class='btn btn-warning' href='increment_handler.php?product_id=$product_id&product_category=$product_category'>+</a>
     
                               <span style='font-size: 20px;'>$product_quantity</span>
     
-                            <a class='btn btn-warning' href='decrement_handler.php?product_id=$product_id'>-</a>
+                            <a class='btn btn-warning' href='decrement_handler.php?product_id=$product_id&product_category=$product_category'>-</a>
 
                             <a href='delete_handler.php?product_id=$product_id&product_category=$product_category' class='btn btn-danger'>Remove</a>
                             

@@ -15,8 +15,9 @@ include_once('connection.php');
 $username = $_SESSION['username'];
 
 $product_id = $_GET['product_id'];
+$product_category = $_GET['product_category'];
 
-$sql = "select * from cart where username = '$username' and product_id= '$product_id'";
+$sql = "select * from cart where username = '$username' and product_category = '$product_category' and product_id= '$product_id'";
 
 
 $result = mysqli_query($connection, $sql);
@@ -31,7 +32,7 @@ if ($product_quantity < 10) {
 }
 
 
-$update_sql = "update cart set product_quantity='$product_quantity' where username = '$username' and product_id = '$product_id'";
+$update_sql = "update cart set product_quantity='$product_quantity' where username = '$username' and product_id = '$product_id' and product_category = '$product_category'";
 
 
 $inserted = mysqli_query($connection, $update_sql);
