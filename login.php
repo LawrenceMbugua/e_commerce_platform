@@ -168,7 +168,16 @@ if (isset($_SESSION['username'])) {
         </div>
       </div>
     </div>
-    <p id="demo"></p>
+
+      <br><br><br>          
+
+      <div class="footer bg-dark text-white mt-5 px-5 py-5" style='height: 30vh;'>
+
+        <p class='me-0'> &copy; Copyright 2022 | All Rights Reserved.</p>
+
+      </div>
+
+    
 
     <script>
       function validateForm() {
@@ -183,7 +192,10 @@ if (isset($_SESSION['username'])) {
           return false;
         }
       }
+
     </script>
+
+
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </body>
